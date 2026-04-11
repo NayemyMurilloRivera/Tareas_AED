@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Cola_circular/Cola_circular.vcxproj" Id="81e31808-9102-4a55-81a0-54252ad6db7b" />
+</Solution>
