@@ -14,7 +14,7 @@ struct cola_circular {
     bool vacio();
     bool push(t val);
     bool pop(t& val);
-    void filita();
+    void print();
 };
 
 template<class t, int n>
@@ -87,29 +87,28 @@ bool cola_circular<t, n>::pop(t& val) {
     return true;
 
 }
-
 template<class T, int n>
-void cola_circular<T, n>::filita() {
+void cola_circular<T, n>::print() {
     if (vacio()) {
         cout << "Cola vacia\n";
         return;
     }
 
-    T* aux = head;
-
     cout << "\n";
 
-    while (true) {
-        cout << "[" << *aux << "]";
-
-        if (aux == tail) break;
-
-        if (aux == arrpr + (n - 1))
-            aux = arrpr;
-        else
-            ++aux;
+    if (head == arrpr || head < tail) {
+        T* aux = head;
+        for (; aux <= arrpr + (n_elementos - 1); aux++) {
+            cout << "[" << *aux << "]";
+        }
     }
 
+    else {
+        T* aux = arrpr;
+        for (; aux <= arrpr + (n_elementos - 1); aux++) {
+            cout << "[" << *aux << "]";
+        }
+    }
     cout << "\nhead -> " << *head;
     cout << "\ntail -> " << *tail << "\n";
 }
@@ -122,18 +121,20 @@ int main() {
     p.push(4);
     p.push(5);
 
-    p.filita();
+    p.print();
 
     int x;
     p.pop(x);
     p.pop(x);
 
-    p.filita();
+    p.print();
 
     p.push(6);
     p.push(7);
+    p.pop(x);
+    p.push(8);
 
-    p.filita();
+    p.print();
 
     return 0;
 }
