@@ -15,6 +15,7 @@ struct cola_circular {
     bool push(t val);
     bool pop(t& val);
     void print();
+    void print_normal();
 };
 
 template<class t, int n>
@@ -87,6 +88,27 @@ bool cola_circular<t, n>::pop(t& val) {
     return true;
 
 }
+
+template<class T, int n>
+void cola_circular<T, n>::print_normal() {
+    if (vacio()) {
+        cout << "Cola vacia\n";
+        return;
+    }
+    cout << "Impresion normal:[";
+
+    for (T* p = head;p !=tail ; p++) {
+        if ( p == arrpr + (n_elementos)) {
+            p = arrpr;
+            
+        }
+        cout << *p;
+    }
+    cout << *tail;
+
+    cout << "]";
+
+}
 template<class T, int n>
 void cola_circular<T, n>::print() {
     if (vacio()) {
@@ -122,6 +144,7 @@ int main() {
     p.push(5);
 
     p.print();
+    p.print_normal();
 
     int x;
     p.pop(x);
@@ -129,12 +152,15 @@ int main() {
 
     p.print();
 
+
     p.push(6);
     p.push(7);
     p.pop(x);
     p.push(8);
 
     p.print();
+    p.print_normal();
+    
 
     return 0;
 }
