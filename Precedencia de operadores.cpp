@@ -29,54 +29,51 @@ int polar::precedencia(string a) {
 void polar::forma_pila(string a) {
 	for (int i = 0; i < a.length(); i++) {
 		string c(1, a[i]);
-		if (precedencia(c) == 4) { // "(" NO HACE NI M
+		cout << c << " -> " << precedencia(c) << endl;
+		int p = precedencia(c);
+		if (p == 4) {
 			pela.push(c);
 		}
-		if (precedencia(c) == 0) { // numeros
+		else if (p == 0) {
 			resultado.push_back(c);
 		}
-
-		if (precedencia(c) == 2) { // debe seguir la regla de mayor e igual 
-			for (; !pela.empty() && precedencia(pela.top()) >=2; pela.pop()) {
+		else if (p == 2) {
+			for (; !pela.empty() && precedencia(pela.top()) != 4 && precedencia(pela.top()) >= 2; pela.pop()) {
 				resultado.push_back(pela.top());
 			}
 			pela.push(c);
-
 		}
-		if (precedencia(c) == 3) { // debe seguir la regla de mayor e igual * /
-			for (; !pela.empty() && precedencia(pela.top()) > 3; pela.pop()) {
+		else if (p == 3) {
+			for (; !pela.empty() && precedencia(pela.top()) != 4 && precedencia(pela.top()) > 3; pela.pop()) {
 				resultado.push_back(pela.top());
 			}
 			pela.push(c);
-
 		}
-
-		if (precedencia(c) == 1) {
-			for (; !pela.empty() && precedencia(pela.top()) >= 1; pela.pop()) {
+		else if (p == 1) {
+			for (; !pela.empty() && precedencia(pela.top()) != 4 && precedencia(pela.top()) >= 1; pela.pop()) {
 				resultado.push_back(pela.top());
 			}
 			pela.push(c);
-
 		}
-
-
-		if (precedencia(c) == 5) {
-			for ( ; !pela.empty() && precedencia(pela.top())!=4; pela.pop()){
-				resultado.push_back(pela.top()); 
+		else if (p == 5) {
+			for (; !pela.empty() && precedencia(pela.top()) != 4; pela.pop()) {
+				resultado.push_back(pela.top());
 			}
 			if (!pela.empty()) pela.pop();
-
 		}
+
+	}
 
 	for (; !pela.empty(); pela.pop()) {
 		resultado.push_back(pela.top());
 
 	}
 		
-	}
+	
 }
 void polar::impresion()
 {
+	
 	for (int i = 0; i < resultado.size(); i++) {
 		cout << resultado[i];
 	}
@@ -84,13 +81,10 @@ void polar::impresion()
 }
 int main()
 {
+	cout << "FUNCIONA NUEVO CODIGO\n";
 	string a;
 	cout << "Ingresa tu a:" << endl; cin >> a;
 	polar webadita;
 	webadita.forma_pila(a);
-	webadita.impresion();
-
-
-	
-	
+	webadita.impresion();	
 }
