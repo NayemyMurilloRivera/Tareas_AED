@@ -13,7 +13,6 @@ struct Libro {
     int calificacion{ 0 };
 };
 
-// 🔹 NODO
 template <class T>
 struct CNode {
     T value;
@@ -22,7 +21,6 @@ struct CNode {
     CNode(T v) : value(v), next(nullptr) {}
 };
 
-// 🔹 COMPARADOR
 struct ComparadorLibro {
     int criterio;
     bool asc;
@@ -40,7 +38,6 @@ struct ComparadorLibro {
     }
 };
 
-// 🔹 LISTA
 template <class T, class Compare>
 class CSortedList {
 public:
