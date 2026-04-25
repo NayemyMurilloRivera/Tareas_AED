@@ -5,8 +5,6 @@ web scraping // revision de paginas https://toscrape.com/ para los datos
 #include <iostream>
 #include <string>
 using namespace std;
-
-// ================= LIBRO =================
 struct Libro {
     string titulo{};
     string autor{};
@@ -14,7 +12,6 @@ struct Libro {
     int calificacion{ 0 };
 };
 
-// ================= NODO =================
 template <typename T>
 struct CNode {
     T value;
@@ -23,9 +20,8 @@ struct CNode {
     CNode(T v) : value(v), next(nullptr) {}
 };
 
-// ================= COMPARADOR =================
 struct ComparadorLibro {
-    int criterio; // 1=titulo, 2=autor, 3=precio, 4=calificacion
+    int criterio; 
     bool asc;
 
     ComparadorLibro(int c, bool a) : criterio(c), asc(a) {}
@@ -41,7 +37,6 @@ struct ComparadorLibro {
     }
 };
 
-// ================= LISTA =================
 template <typename T, typename Compare>
 class CSortedList {
 public:
@@ -103,7 +98,6 @@ private:
     Compare comp;
 };
 
-// ================= MAIN =================
 int main() {
     int criterio, orden =1;
 
