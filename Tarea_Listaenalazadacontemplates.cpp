@@ -1,7 +1,7 @@
-1 ) Para cada nodo: Libro : Titulo , autor , precio , calificacion (1-5) con menu interactivo , este libro se debe arregalar en la lista enlazada segun el orden ya sea ascen o descen (sin repeticiones)
+/*1 ) Para cada nodo: Libro : Titulo , autor , precio , calificacion (1-5) con menu interactivo , este libro se debe arregalar en la lista enlazada segun el orden ya sea ascen o descen (sin repeticiones)
 2) Cambiar en templates // TAREA 1: primera tarea asc , des (foto de la pizarra)
 3) TAREA 2: Cambiar nodos en libros , llene la lista enlazada segun el tipo , por titulo , precio , autor , asi por cada uno. ( este es de pensamiento libre : fuerza bruta (implementacion de functores) , mover segun el return))
-web scraping // revision de paginas https://toscrape.com/ para los datos
+web scraping // revision de paginas https://toscrape.com/ para los datos*/
 #include <iostream>
 #include <string>
 using namespace std;
