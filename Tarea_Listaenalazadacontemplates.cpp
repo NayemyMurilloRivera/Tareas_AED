@@ -5,6 +5,7 @@ web scraping // revision de paginas https://toscrape.com/ para los datos*/
 #include <iostream>
 #include <string>
 using namespace std;
+
 struct Libro {
     string titulo{};
     string autor{};
@@ -12,7 +13,8 @@ struct Libro {
     int calificacion{ 0 };
 };
 
-template <typename T>
+// 🔹 NODO
+template <class T>
 struct CNode {
     T value;
     CNode<T>* next;
@@ -20,8 +22,9 @@ struct CNode {
     CNode(T v) : value(v), next(nullptr) {}
 };
 
+// 🔹 COMPARADOR
 struct ComparadorLibro {
-    int criterio; 
+    int criterio;
     bool asc;
 
     ComparadorLibro(int c, bool a) : criterio(c), asc(a) {}
@@ -37,7 +40,8 @@ struct ComparadorLibro {
     }
 };
 
-template <typename T, typename Compare>
+// 🔹 LISTA
+template <class T, class Compare>
 class CSortedList {
 public:
     CSortedList(Compare c) : head(nullptr), comp(c) {}
@@ -98,39 +102,30 @@ private:
     Compare comp;
 };
 
+// 🔹 MAIN
 int main() {
-    int criterio, orden =1;
+    int criterio;
+    int orden = 1;
+    bool asc = true;
 
     cout << "\n1. Titulo\n2. Autor\n3. Precio\n4. Calificacion\n";
     cin >> criterio;
-    bool asc = true;
 
     if (criterio == 3 || criterio == 4) {
-        int orden;
         cout << "Orden:\n1. Ascendente\n2. Descendente\n";
         cin >> orden;
         asc = (orden == 1);
     }
 
-
-    ComparadorLibro comp(criterio, orden == 1);
+    ComparadorLibro comp(criterio, asc);
     CSortedList<Libro, ComparadorLibro> lista(comp);
 
+    // 🔥 DATOS
     lista.ins({ "1984", "Orwell", 40, 5 });
     lista.ins({ "ElQuijote", "Cervantes", 30, 4 });
     lista.ins({ "CienAnosDeSoledad", "GarciaMarquez", 45, 5 });
     lista.ins({ "LaMetamorfosis", "Kafka", 25, 5 });
     lista.ins({ "ElPrincipito", "SaintExupery", 20, 4 });
-    lista.ins({ "It", "King", 50, 5 });
-    lista.ins({ "Dracula", "Stoker", 35, 4 });
-    lista.ins({ "Hamlet", "Shakespeare", 28, 5 });
-    lista.ins({ "Odisea", "Homero", 32, 4 });
-    lista.ins({ "Fahrenheit451", "Bradbury", 38, 5 });
-    lista.ins({ "Dune", "Herbert", 55, 5 });
-    lista.ins({ "Fundacion", "Asimov", 48, 5 });
-    lista.ins({ "ElAlquimista", "Coelho", 22, 3 });
-    lista.ins({ "Inferno", "Dante", 33, 5 });
-    lista.ins({ "OrgulloYPrejuicio", "Austen", 27, 4 });
 
     int op;
     do {
